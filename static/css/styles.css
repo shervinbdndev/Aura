@@ -23,6 +23,14 @@ html, body {
     max-width: 500px;
 }
 
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #23272b;
+}
+
 .carousel-control-prev, .carousel-control-next {
     width: 5%;
     position: absolute;
@@ -30,9 +38,64 @@ html, body {
     z-index: 5;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    width: 2rem;
-    height: 2rem;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    color: #000000;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-item {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    height: 100%;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.btn-lg {
+    border-radius: 30px;
+    padding: 0.8rem 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-lg:hover {
+    background: linear-gradient(90deg, #ff9671, #ffc75f);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.hero {
+    background: #23272b;
+    padding: 4rem 2rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    animation: hero-animation 1.5s ease-in-out;
+}
+
+@keyframes hero-animation {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #claim {
@@ -52,7 +115,249 @@ html, body {
     }
 }
 
+.signin {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ff6f91, #845ec2);
+}
+
+.app-title {
+    font-weight: bolder;
+    font-size: 5.2rem;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ff6f91, #845ec2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2), 0 0 25px rgba(255, 255, 255, 0.5);
+    animation: app-title-glow 3s ease-in-out infinite alternate;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+@keyframes app-title-glow {
+    0% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), 0 0 25px rgba(255, 255, 255, 0.5),
+        0 0 50px rgba(255, 113, 91, 0.6), 0 0 100px rgba(133, 94, 194, 0.9);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 199, 95, 1),
+        0 0 40px rgba(255, 111, 145, 1);
+    }
+    100% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), 0 0 25px rgba(255, 255, 255, 0.5),
+        0 0 50px rgba(254, 180, 123, 0.8), 0 0 100px rgba(255, 111, 145, 1);
+    }
+}
+
+.lead {
+    font-size: 1.5rem;
+    color: #ffffff;
+    opacity: 0.8;
+    animation: fade-in 2s ease-in-out 1s forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.features {
+    background: linear-gradient(135deg, rgba(245, 245, 245, 0.8), rgba(255, 255, 255, 0.7));
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 3rem 1rem;
+}
+
+.features h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: app-title-glow 3s ease-in-out infinite alternate;
+}
+
+.profile {
+    background: #23272b;
+}
+
+.features p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.features .icon {
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.features h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowingText 1.5s infinite alternate;
+}
+
+.usability, .signin, .signup {
+    background: #23272b;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.usability {
+    padding: 3rem 1rem;
+}
+
+.usability h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowingTitle 1.5s infinite alternate;
+}
+
+@keyframes glowingTitle {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff6f91, 0 0 20px #ff6f91, 0 0 30px #ff3e70;
+        color: #fff;
+    }
+    50% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff6f91, 0 0 30px #ff3e70, 0 0 40px #ff1e50;
+        color: #fff;
+    }
+    100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff6f91, 0 0 20px #ff6f91, 0 0 30px #ff3e70;
+        color: #fff;
+    }
+}
+
+.usability p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.usability .icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+.joinus {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 3rem 1rem;
+    transition: transform 0.3s ease;
+}
+
+.joinus h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #343a40;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.joinus p {
+    font-size: 1.2rem;
+    color: #666;
+    opacity: 0.9;
+}
+
+.joinus .icon {
+    background-color: rgba(255, 223, 0, 0.2);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.joinus .icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px; 
+    font-size: 1rem; 
+    border: 1px solid #ced4da; 
+    border-radius: 5px; 
+    background-color: #fff; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.form-control:focus {
+    border-color: #495057;
+    box-shadow: 0 0 5px rgba(127, 173, 226, 0.5);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
 #increment {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,24 +365,28 @@ html, body {
     font-size: 25px;
     cursor: pointer;
     outline: none;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    border: 3px solid #333;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    border: none;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 25px rgba(0, 0, 0,0.4) inset rgba(255, 255, 255, 0.3);
 }
 
 #increment:active {
     transform: scale(1.1);
-    background-color: #36d836;
+    background-color: #ff9671;
+}
+
+#increment.bounce {
+    animation: bounce 0.5s;
 }
 
 #increment:after {
     content: "";
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     position: absolute;
     z-index: -1;
@@ -99,7 +408,14 @@ html, body {
 
 #increment:hover {
     color: white;
-    background-color: #36d836;
+    background-color: #ff9671;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+#increment:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ff9671;
 }
 
 .custom-box h4 {
@@ -112,37 +428,54 @@ footer {
 }
 
 .navbar {
-    background-color: #343a40; 
+    background-color: #23272b;
+    padding: 1rem 2rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
-
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #fff;
-    font-weight: bold;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#ff7e5f, #feb47b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
 }
 
 
 .navbar-nav .nav-link {
-    color: #fff;
     font-size: 1.1rem;
-    margin-right: 15px;
-    transition: color 0.3s ease-in-out;
+    color: #fff;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-nav .nav-link:hover {
-    color: #f8d210; 
+    color: #ff9671;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 150, 113, 0.5);
+    transition: all 0.3s ease;
 }
 
-
-.dropdown-menu {
-    background-color: #343a40; 
+.navbar-nav .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border: none;
 }
 
-.dropdown-item {
-    color: #fff;
-    transition: background-color 0.3s ease-in-out;
+.navbar-toggler {
+    background-color: #ff9671;
+    border: none;
+    outline: none;
+    padding: 0.4rem 0.6rem;
 }
 
 .dropdown-item:hover {

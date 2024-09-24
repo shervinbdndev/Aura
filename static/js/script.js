@@ -1,1 +1,1 @@
-// moz
+// moz-script

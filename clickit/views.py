@@ -1,10 +1,11 @@
+from typing import Union
+
 from django.contrib import messages
 from django.urls.base import reverse
 from django.views.generic.base import View
 from django.http.request import HttpRequest
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 
 from settings.server_side_data import data
 
@@ -40,10 +41,10 @@ class ClaimRewardView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         user_coin, created = UserCoinModel.objects.get_or_create(user=request.user)
         
-        if (user_coin.coins >= data['reward']):
+        if (user_coin.has_claimed_reward):
             messages.error(
                 request=request,
-                message='You Already claimed the reward.'
+                message='You Already claimed the reward.',
             )
             
             return redirect(to=reverse('user-profile'))
@@ -56,22 +57,24 @@ class ClaimRewardView(View):
             },
         )
     
-    def post(self, request: HttpRequest):
+    def post(self, request: HttpRequest) -> Union[HttpResponseRedirect, HttpResponsePermanentRedirect]:
         user_coin, created = UserCoinModel.objects.get_or_create(user=request.user)
         
-        if (user_coin.coins >= data['reward']):
+        if (user_coin.has_claimed_reward):
             messages.error(
                 request=request,
-                message='You Already claimed the reward.'
+                message='You Already claimed the reward.',
             )
             
             return redirect(to=reverse('user-profile'))
         
         user_coin.coins += data['reward']
+        user_coin.has_claimed_reward = True
         user_coin.save()
         
         messages.success(
             request=request,
             message='Reward claimed successfully!',
         )
+        
         return redirect(to=reverse('user-profile'))

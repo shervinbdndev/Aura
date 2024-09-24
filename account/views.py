@@ -30,6 +30,7 @@ class UserProfileView(View):
             template_name='profile/profile.html',
             context={
                 'coins': user_coins.coins,
+                'has_claimed': user_coins.has_claimed_reward,
                 'server': data,
             },
         )
@@ -43,7 +44,7 @@ class UserProfileView(View):
 
 
 class UserIncrementCoinsView(View):
-    def post(self, request: HttpRequest):
+    def post(self, request: HttpRequest) -> JsonResponse:
         user_coins, created = UserCoinModel.objects.get_or_create(user=request.user)
         user_coins.coins += 1
         user_coins.save()
@@ -73,7 +74,7 @@ class UserLoginView(View):
             }
         )
     
-    def post(self, request: HttpRequest) -> HttpResponse:
+    def post(self, request: HttpRequest) -> Union[HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect]:
         login_form: LoginForm = LoginForm(request.POST or None)
         
         if (login_form.is_valid()):

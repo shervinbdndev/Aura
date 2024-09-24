@@ -14,6 +14,6 @@ data: dict[str, Union[str, int]] = {
     'step_1_desc': 'Getting Started is easy! Create your account with just a few clicks.',
     'step_2_desc': 'Its simple! Click & earn.',
     'step_3_desc': 'After spending a time clicking now you can Upgrade yourself to earn more.',
-    'jac_desc': 'benefits of creating an account in Aura.',
+    'jac_desc': 'benefit of creating an account in Aura.',
     'copyright': '2024 Aura. All rights reserved.',
 }
