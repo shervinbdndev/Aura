@@ -1,0 +1,1 @@
+from .server_side_data import data

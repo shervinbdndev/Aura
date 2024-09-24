@@ -1,0 +1,214 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% if server.title %}
+                {{ server.title }}
+            {% else %}
+                {{ none }}
+            {% endif %}
+        </title>
+        <style type="text/css">
+            @font-face {
+                font-family: Aldrich;
+                src: url('../../../static/font/Aldrich-Regular.ttf');
+            }
+
+            * {
+                font-family: Aldrich;
+            }
+        </style>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    </head>
+{% endblock head %}
+{% block body %}
+    <body>
+        <div class="wrapper">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'index' %}">{{ server.web_app_name }}</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle" aria-hidden="true"></i> {{ request.user.username }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i> Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="bi bi-arrow-left-circle fg-dark" aria-hidden="true"></i> Logout</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Account
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{% url 'user-login' %}"><i class="bi bi-person-down fg-dark"></i> Sign in</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-register' %}"><i class="bi bi-person-up fg-dark"></i> Sign up</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Upgrades
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-x-diamond-fill" style="color: cadetblue;"></i> Manual</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-circle-fill" style="color: blue;"></i> Advanced</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-workspace" style="color: blueviolet;"></i> Business</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-yin-yang" style="color: gold;"></i> Legendary</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                {{ none }}
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    
+            <div class="content">
+                <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <section class="hero bg-dark text-white text-center py-5">
+                                <div class="container py-5">
+                                    <p class="lead">{{ server.header_title }}</p>
+                                    <h1 class="display-1" style="font-weight: bolder;">{{ server.web_app_name }}</h1>
+                                    <p class="lead py-2">{{ server.header_desc }}</p>
+                                    <a href="#" class="btn btn-light btn-lg">Get Started</a>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="carousel-item">
+                            <section class="hero bg-dark text-white text-center py-5">
+                                <div class="container py-5">
+                                    <p class="lead">{{ server.web_app_name }} is all</p>
+                                    <h1 class="display-1" style="font-weight: bolder;">Free</h1>
+                                    <p class="lead py-2">feel free to use Aura platform.</p>
+                                    <a href="#" class="btn btn-light btn-lg">Get Started</a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <section class="features py-5">
+                    <div class="text-dark font-weight-bold">
+                        <h1 class="display-3 text-center mb-4">Features</h1>
+                        <p class="text-center mb-5">{{ server.features_desc }}</p>
+                    </div>
+                    <div class="row text-center py-5">
+                        <div class="col-md-4">
+                            <div class="icon mb-3 py-3">
+                                <i class="bi bi-speedometer2" style="font-size: 2rem; color: rgb(233, 17, 135);"></i>
+                            </div>
+                            <h3>Fast Performance</h3>
+                            <p>{{ server.fast_performance_desc }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="icon mb-3 py-3">
+                                <i class="bi bi-shield-lock" style="font-size: 2rem; color: rgb(233, 17, 135);"></i>
+                            </div>
+                            <h3>Secure & Safe</h3>
+                            <p>{{ server.secure_safe_desc }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="icon mb-3 py-3">
+                                <i class="bi bi-universal-access" style="font-size: 2rem; color: rgb(233, 17, 135);"></i>
+                            </div>
+                            <h3>Universal Access</h3>
+                            <p>{{ server.universal_access_desc }}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <br><br>
+
+                <section class="usability bg-dark text-white py-5">
+                    <div class="text-white font-weight-bold">
+                        <h1 class="display-3 text-center mb-4">Simplicity</h1>
+                        <p class="text-center mb-5">Our platform is simple to use and Usable to earn.</p>
+                    </div>
+                    <div class="row text-center py-5">
+                        <div class="col-md-4">
+                            <div class="icon mb-3">
+                                <i class="bi bi-check2-circle" style="font-size: 2rem; color: aqua;"></i>
+                            </div>
+                            <h3>Step 1: Sign Up</h3>
+                            <p>{{ server.step_1_desc }}</p>
+                        </div>
+                        <div class="col-md-4 py-3">
+                            <div class="icon mb-3">
+                                <i class="bi bi-hand-index-thumb" style="font-size: 2rem; color: aqua;"></i>
+                            </div>
+                            <h3>Step 2: click</h3>
+                            <p>{{ server.step_2_desc }}</p>
+                        </div>
+                    
+                        <div class="col-md-4 py-3">
+                            <div class="icon mb-3">
+                                <i class="bi bi-arrow-up-circle-fill" style="font-size: 2rem; color: aqua;"></i>
+                            </div>
+                            <h3>Step 3: Upgrade</h3>
+                            <p>{{ server.step_3_desc }}</p>
+                        </div>
+                    </div>
+                </section>
+                {% if not request.user.is_authenticated %}
+                    <br><br>
+
+                    <section class="joinus bg-white text-dark py-5">
+                        <div class="font-weight-bold bg-white">
+                            <h1 class="display-3 text-center mb-4">Join our community right now</h1>
+                            <p class="text-center mb-5">{{ server.jac_desc }}</p>
+                        </div>
+                        <div class="container py-5">
+                            <div class="text-center py-5">
+                                <div class="icon mb-3">
+                                    <i class="bi bi-coin" style="font-size: 2rem; color: gold;"></i>
+                                </div>
+                                <h2>1,000,000 Coins</h2>
+                                <p>is waiting for you to claim after creating an account, so hurry up!</p>
+                                
+                                <br>
+                                
+                                <a href="{% url 'user-register' %}" class="btn btn-dark btn-lg">Create an Account</a>
+                                
+                            </div>
+                        </div>
+                    </section>
+                {% endif %}
+            </div>
+    
+            <footer class="bg-white text-dark text-center py-3">
+                <p>&copy; {{ server.copyright }}</p>
+            </footer>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </body>
+{% endblock body %}
