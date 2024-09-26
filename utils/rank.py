@@ -38,7 +38,6 @@ class LegendaryRanks:
 class RankManager:
     def __init__(self) -> None:
         self.__user_rank = None
-        self.__user_true_rank = None
         self.__user_exp_needed_for_next_rank = None
         
     @property
@@ -48,14 +47,6 @@ class RankManager:
     @user_rank.setter
     def user_rank(self, value: str) -> None:
         self.__user_rank = value
-        
-    @property
-    def user_true_rank(self) -> str:
-        return self.__user_true_rank
-    
-    @user_true_rank.setter
-    def user_true_rank(self, value: str) -> None:
-        self.__user_true_rank = value
     
     @property
     def user_exp_needed_for_next_rank(self) -> int:
@@ -65,59 +56,45 @@ class RankManager:
     def user_exp_needed_for_next_rank(self, value: str) -> None:
         self.__user_exp_needed_for_next_rank = value
         
-    def setUserTrueRank(self) -> None:
-        rank_list: list[str] = [
-            'Aura Apprentice',
-            'Aura Veteran',
-            'Aura Hero',
-            'Aura Legend',
-            'Aura Immortal',
-            'Aura Godlike',
-            'Aura Celestial',
-            'Aura Divine',
-            'Aura Eternal',
-        ]
-        
-        for rank in rank_list:
-            if (rank == self.user_rank):
-                self.user_true_rank = rank_list[rank_list.index(self.user_rank) - 1]
-                break
-        
     def setUserRank(self, user: UserCoinModel) -> None:
         if user.coins == -1:
             self.user_rank = 'Admin'
             return
         
-        if user.coins >= LegendaryRanks.L_RANK_2_EXP:
+        if user.coins >= LegendaryRanks.L_RANK_3_EXP:
             self.user_rank = LegendaryRanks.L_RANK_3_NAME
+            self.user_exp_needed_for_next_rank = 'None'
+            
+        if user.coins >= LegendaryRanks.L_RANK_2_EXP:
+            self.user_rank = LegendaryRanks.L_RANK_2_NAME
             self.user_exp_needed_for_next_rank = LegendaryRanks.L_RANK_3_EXP
             
         elif user.coins >= LegendaryRanks.L_RANK_1_EXP:
-            self.user_rank = LegendaryRanks.L_RANK_2_NAME
+            self.user_rank = LegendaryRanks.L_RANK_1_NAME
             self.user_exp_needed_for_next_rank = LegendaryRanks.L_RANK_2_EXP
             
         elif user.coins >= Ranks.RANK_6_EXP:
-            self.user_rank = LegendaryRanks.L_RANK_1_NAME
+            self.user_rank = Ranks.RANK_6_NAME
             self.user_exp_needed_for_next_rank = LegendaryRanks.L_RANK_1_EXP
             
         elif user.coins >= Ranks.RANK_5_EXP:
-            self.user_rank = Ranks.RANK_6_NAME
+            self.user_rank = Ranks.RANK_5_NAME
             self.user_exp_needed_for_next_rank = Ranks.RANK_6_EXP
             
         elif user.coins >= Ranks.RANK_4_EXP:
-            self.user_rank = Ranks.RANK_5_NAME
+            self.user_rank = Ranks.RANK_4_NAME
             self.user_exp_needed_for_next_rank = Ranks.RANK_5_EXP
             
         elif user.coins >= Ranks.RANK_3_EXP:
-            self.user_rank = Ranks.RANK_4_NAME
+            self.user_rank = Ranks.RANK_3_NAME
             self.user_exp_needed_for_next_rank = Ranks.RANK_4_EXP
             
         elif user.coins >= Ranks.RANK_2_EXP:
-            self.user_rank = Ranks.RANK_3_NAME
+            self.user_rank = Ranks.RANK_2_NAME
             self.user_exp_needed_for_next_rank = Ranks.RANK_3_EXP
             
         elif user.coins >= Ranks.RANK_1_EXP:
-            self.user_rank = Ranks.RANK_2_NAME
+            self.user_rank = Ranks.RANK_1_NAME
             self.user_exp_needed_for_next_rank = Ranks.RANK_2_EXP
             
         else:

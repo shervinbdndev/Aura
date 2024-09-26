@@ -28,7 +28,6 @@ class UserProfileView(View):
         
         rank_manager: RankManager = RankManager()
         rank_manager.setUserRank(user=user_coins)
-        rank_manager.setUserTrueRank()
         
         return render(
             request=request,
@@ -36,7 +35,7 @@ class UserProfileView(View):
             context={
                 'coins': user_coins.coins,
                 'has_claimed': user_coins.has_claimed_reward,
-                'rank': rank_manager.user_true_rank,
+                'rank': rank_manager.user_rank,
                 'xp_needed': rank_manager.user_exp_needed_for_next_rank,
                 'server': data,
             },
@@ -58,11 +57,10 @@ class UserIncrementCoinsView(View):
         
         rank_manager: RankManager = RankManager()
         rank_manager.setUserRank(user=user_coins)
-        rank_manager.setUserTrueRank()
         
         return JsonResponse({
             'coins': user_coins.coins, 
-            'rank': rank_manager.user_true_rank,
+            'rank': rank_manager.user_rank,
             'xp_needed': rank_manager.user_exp_needed_for_next_rank,
         })
 
