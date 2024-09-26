@@ -12,7 +12,8 @@ from django.http.response import JsonResponse, HttpResponse, HttpResponseRedirec
 from .models import UserCoinModel
 from .forms import RegisterForm, LoginForm
 
-from settings.server_side_data import data
+from utils.rank import RankManager
+from utils.server_side_data import data
 
 
 
@@ -25,12 +26,18 @@ class UserProfileView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         user_coins, created = UserCoinModel.objects.get_or_create(user=request.user)
         
+        rank_manager: RankManager = RankManager()
+        rank_manager.setUserRank(user=user_coins)
+        rank_manager.setUserTrueRank()
+        
         return render(
             request=request,
             template_name='profile/profile.html',
             context={
                 'coins': user_coins.coins,
                 'has_claimed': user_coins.has_claimed_reward,
+                'rank': rank_manager.user_true_rank,
+                'xp_needed': rank_manager.user_exp_needed_for_next_rank,
                 'server': data,
             },
         )
@@ -48,8 +55,15 @@ class UserIncrementCoinsView(View):
         user_coins, created = UserCoinModel.objects.get_or_create(user=request.user)
         user_coins.coins += 1
         user_coins.save()
+        
+        rank_manager: RankManager = RankManager()
+        rank_manager.setUserRank(user=user_coins)
+        rank_manager.setUserTrueRank()
+        
         return JsonResponse({
             'coins': user_coins.coins, 
+            'rank': rank_manager.user_true_rank,
+            'xp_needed': rank_manager.user_exp_needed_for_next_rank,
         })
 
 

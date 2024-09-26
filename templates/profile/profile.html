@@ -6,11 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            {% if server.title %}
-                {{ server.title }}
-            {% else %}
-                {{ none }}
-            {% endif %}
+            Aura: {{ request.user.username }}
         </title>
         <style type="text/css">
             @font-face {
@@ -69,10 +65,10 @@
                                         Upgrades
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-x-diamond-fill" style="color: cadetblue;"></i> Manual</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-circle-fill" style="color: blue;"></i> Advanced</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-workspace" style="color: blueviolet;"></i> Business</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-yin-yang" style="color: gold;"></i> Legendary</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-x-diamond-fill" style="color: cadetblue;"></i>&nbsp;Manual</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-circle-fill" style="color: blue;"></i>&nbsp;Advanced</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-workspace" style="color: blueviolet;"></i>&nbsp;Business</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-yin-yang" style="color: gold;"></i>&nbsp;Legendary</a></li>
                                     </ul>
                                 </li>
                             {% else %}
@@ -86,28 +82,111 @@
                 </div>
             </nav>
 
+            <div class="container py-3">
+                <div class="row justify-content-center align-items-stretch">
+                    <div class="col-lg-3 col-md-4 col-5">
+                        <div class="fancy-container text-center d-flex flex-column justify-content-center">
+                            <h1 class="mb-2">1</h1>
+                            <p>Earn per Click</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-5">
+                        <div class="fancy-container text-center d-flex flex-column justify-content-center">
+                            <h1 class="mb-2">0.0</h1>
+                            <p>Earn per Second</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3">
+                <div class="col-lg-9 col-md-10 col-11">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <p class="text-white fs-5 mb-0">Rank:</p>
+                        </div>
+                        <div class="col-auto">
+                            <div class="rank-display {% if coins >= 200_000_000 %} rank-legendary {% elif coins >= 50_000_000 %} rank-mythical {% elif coins >= 10_000_000 %} rank-rare {% else %} rank-common {% endif %}" id="user-rank">{{ rank }}</div>
+                        </div>
+                    </div>
+                    <div class="progress" id="aura-progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ coins }}" aria-valuemin="0" aria-valuemax="{{ xp_needed }}"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3">
+                <div class="col-lg-9 col-md-10 col-11">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <p class="text-white fs-5 mb-0">Next Rank:</p>
+                        </div>
+                        <div class="col-auto">
+                            <div class="d-flex flex-row align-items-center">
+                                <h1 class="navbar-brand p-2 mb-1" style="font-family: Lobster; font-size: 1.5rem;">A</h1>
+                                <div class="rank-display fs-5" id="xp-needed">{{ xp_needed|intcomma }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="container py-5">
                 <div class="row justify-content-center text-white text-center">
                     <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center">
                         <div class="d-flex flex-row align-items-center">
-                            <i class="bi bi-coin" style="font-size: 3.5rem; color: gold;margin-right: 10px;"></i>
+                            <h1 class="navbar-brand p-2 mb-3" style="font-family: Lobster; font-size: 2.5rem;">A</h1>
                             <h1 class="display-4"><span id="coin-count">{{ coins|intcomma }}</span></h1>
                         </div>
-                        <button id="increment" class="mt-3"><span class="bi bi-coin" style="font-size: 2rem;"></span></button>
+                        <button id="increment" class="mt-3 text-center" style="font-family: Lobster;">A</button>
                     </div>
                 </div>
             </div>
-    
-            <footer class="text-white text-center py-3">
-                <p>&copy; {{ server.copyright }}</p>
-            </footer>
+
+            <div class="container py-5">
+                <div class="row justify-content-center align-items-center text-center">
+                    <div class="col-6 col-md-3">
+                        <div class="upgrade-container py-3 mb-3">
+                            <a style="text-decoration: none;" href="#"><i class="bi bi-x-diamond-fill"></i>&nbsp;Manual</a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="upgrade-container py-3 mb-3">
+                            <a style="text-decoration: none;" href="#"><i class="bi bi-exclamation-circle-fill"></i>&nbsp;Advanced</a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="upgrade-container py-3 mb-3">
+                            <a style="text-decoration: none;" href="#"><i class="bi bi-person-workspace"></i>&nbsp;Business</a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="upgrade-container py-3 mb-3">
+                            <a style="text-decoration: none;" href="#"><i class="bi bi-yin-yang"></i>&nbsp;Legendary</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="{% static 'js/script.js' %}"></script>
             <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var progressBar = document.querySelector("#aura-progress .progress-bar");
+                    var progressValue = progressBar.getAttribute('aria-valuenow'); 
+                    var progressMax = progressBar.getAttribute('aria-valuemax');   
+                
+                    
+                    var percentage = (progressValue / progressMax) * 100;
+                    progressBar.style.width = percentage + '%';
+                    progressBar.textContent = new Intl.NumberFormat().format(progressValue) + ' / ' + new Intl.NumberFormat().format(progressMax);
+                });
+
                 $(document).ready(function() {
                     $('#increment').click(function(e) {
                         e.preventDefault();
-
+                
                         $.ajax({
                             type: 'POST',
                             url: '{% url "user-click" %}',
@@ -115,12 +194,26 @@
                                 'csrfmiddlewaretoken': '{{ csrf_token }}',
                             },
                             success: function(response) {
-                                function formatCoins(num) {
-                                    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                function formatCoins(value) {
+                                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                                 }
-
                                 $('#coin-count').text(formatCoins(response.coins));
+
+                                var progressBar = document.querySelector("#aura-progress .progress-bar");
+                                var progressMax = progressBar.getAttribute('aria-valuemax');
+                                var progressValue = response.coins;
+                                var percentage = (progressValue / progressMax) * 100;
+                
+                                progressBar.style.width = percentage + '%';
+                                progressBar.setAttribute('aria-valuenow', progressValue);
+                                progressBar.textContent = formatCoins(progressValue) + ' / ' + formatCoins(progressMax);
+                
+                                $('#user-rank').text(response.rank);
+                                $('#xp-needed').text(formatCoins(response.xp_needed));
                             },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
                         });
                     });
                 });
@@ -129,7 +222,7 @@
     </body>
 {% endblock body %}
 {% block footer %}
-    <footer class="text-dark text-center py-3">
-        <p>&copy; {{ server.copyright }}</p>
+    <footer class="text-white text-center py-3">
+        <p style="text-decoration: none;">&copy; {{ server.copyright }}</p>
     </footer>
 {% endblock footer %}

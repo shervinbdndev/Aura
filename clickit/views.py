@@ -7,7 +7,7 @@ from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 
-from settings.server_side_data import data
+from utils.server_side_data import data
 
 from account.models import UserCoinModel
 from account.forms import RegisterForm, LoginForm

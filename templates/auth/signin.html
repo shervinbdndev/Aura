@@ -51,7 +51,7 @@
                                         <i class="bi bi-person-circle" aria-hidden="true"></i> {{ request.user.username }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i> Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-profile' %}"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i> Profile</a></li>
                                         <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="bi bi-arrow-left-circle fg-dark" aria-hidden="true"></i> Logout</a></li>
                                     </ul>
                                 </li>

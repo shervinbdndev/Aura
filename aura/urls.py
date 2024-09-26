@@ -16,6 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings as DEFAULT_SETTINGS
+
+from error.views import Error400View, Error403View, Error404View, Error500View
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +32,33 @@ urlpatterns = [
         route='account/',
         view=include('account.urls'),
         name='clickit-app',
-    )
+    ),
+    # path(
+    #     route='err_400/',
+    #     view=Error400View.as_view(),
+    #     name='e400',
+    # ),
+    # path(
+    #     route='err_403/',
+    #     view=Error403View.as_view(),
+    #     name='e403',
+    # ),
+    # path(
+    #     route='err_404/',
+    #     view=Error404View.as_view(),
+    #     name='e404',
+    # ),
+    # path(
+    #     route='err_500/',
+    #     view=Error500View.as_view(),
+    #     name='e500',
+    # ),
 ]
+
+if (not DEFAULT_SETTINGS.DEBUG):
+    urlpatterns += static(DEFAULT_SETTINGS.STATIC_URL, document_root=DEFAULT_SETTINGS.STATIC_ROOT)
+
+handler400 = Error400View.as_view()
+handler403 = Error403View.as_view()
+handler404 = Error404View.as_view()
+handler500 = Error500View.as_view()

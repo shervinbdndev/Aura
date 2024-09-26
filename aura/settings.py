@@ -20,12 +20,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    '192.168.1.103',
     '192.168.1.106',
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    
-]
+CSRF_TRUSTED_ORIGINS = []
 
 CORS_REPLACE_HTTPS_REFERER      = False
 HOST_SCHEME                     = "http://"
@@ -56,6 +55,7 @@ EXTERNAL_DJANGO_APPS = [
 APPLICATIONS = [
     'clickit.apps.ClickitConfig',
     'account.apps.AccountConfig',
+    'error.apps.ErrorConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_DJANGO_APPS + APPLICATIONS
