@@ -31,7 +31,7 @@ urlpatterns = [
     path(
         route='account/',
         view=include('account.urls'),
-        name='clickit-app',
+        name='account-app',
     ),
     # path(
     #     route='err_400/',

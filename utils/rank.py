@@ -1,3 +1,5 @@
+from account.models import UserCoinModel
+
 class Ranks:
     RANK_1_EXP: int = 500_000
     RANK_1_NAME: str = 'Aura Apprentice'
@@ -36,7 +38,7 @@ class LegendaryRanks:
 class RankManager:
     def __init__(self) -> None:
         self.__user_rank = None
-        self.user_true_rank = None
+        self.__user_true_rank = None
         self.__user_exp_needed_for_next_rank = None
         
     @property
@@ -46,13 +48,21 @@ class RankManager:
     @user_rank.setter
     def user_rank(self, value: str) -> None:
         self.__user_rank = value
+        
+    @property
+    def user_true_rank(self) -> str:
+        return self.__user_true_rank
+    
+    @user_true_rank.setter
+    def user_true_rank(self, value: str) -> None:
+        self.__user_true_rank = value
     
     @property
     def user_exp_needed_for_next_rank(self) -> int:
         return self.__user_exp_needed_for_next_rank
     
     @user_exp_needed_for_next_rank.setter
-    def user_exp_needed_for_next_rank(self, value) -> None:
+    def user_exp_needed_for_next_rank(self, value: str) -> None:
         self.__user_exp_needed_for_next_rank = value
         
     def setUserTrueRank(self) -> None:
@@ -73,7 +83,7 @@ class RankManager:
                 self.user_true_rank = rank_list[rank_list.index(self.user_rank) - 1]
                 break
         
-    def setUserRank(self, user) -> None:
+    def setUserRank(self, user: UserCoinModel) -> None:
         if user.coins == -1:
             self.user_rank = 'Admin'
             return
