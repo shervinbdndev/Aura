@@ -24,6 +24,5 @@
 ## After you gathered some Aura coins it is time to do the Automation thing by just Upgrading one card to a Level 2 for earning more & more without clicking.
 <img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/upgrade.png' />
 
-# Guess what! Im not finished yet!
-# The last updates & Addons will be visible here in this README.md file.
-# Have a nice day ❤️
+## Guess what! Im not finished yet! The last updates & Addons will be visible here in this README.md file so Stay Tuned
+## Have a nice day ❤️
