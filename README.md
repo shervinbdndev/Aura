@@ -8,7 +8,18 @@
 
 ## Main page of Aura Platform.
 
-<img src='' />
-<img src='' />
-<img src='' />
-<img src='' />
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/main_1.png'/>
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/main_2.png' />
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/main_3.png' />
+
+## Register form for User Registeration(not included the Login Form Picture).
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/form.png' />
+
+## This is the page that You can Click & Earn by just clicking.
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/game.png' />
+
+## Lets not forget after the Registeration and Authetication you Receive 1 Million Aura Coins as a Reward that you can claim everytime you want.
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/reward.png' />
+
+## After you gathered some Aura coins it is time to do the Automation thing by just Upgrading one card to a Level 2 for earning more & more without clicking.
+<img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/upgrade.png' />
