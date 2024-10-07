@@ -56,6 +56,7 @@ APPLICATIONS = [
     'clickit.apps.ClickitConfig',
     'account.apps.AccountConfig',
     'error.apps.ErrorConfig',
+    'upgrade.apps.UpgradeConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_DJANGO_APPS + APPLICATIONS

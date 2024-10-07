@@ -43,16 +43,16 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul class="navbar-nav">
                             <a class="nav-link" href="https://github.com/shervinbdndev/Aura">
-                                <i class="bi bi-github" aria-hidden="true"></i> Github
+                                <i class="bi bi-github" aria-hidden="true"></i>&nbsp;Github
                             </a>
                             {% if request.user.is_authenticated %}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle" aria-hidden="true"></i> {{ request.user.username }}
+                                        <i class="bi bi-person-circle" aria-hidden="true"></i>&nbsp;{{ request.user.username }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{% url 'user-profile' %}"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i> Profile</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="bi bi-arrow-left-circle fg-dark" aria-hidden="true"></i> Logout</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-profile' %}"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i>&nbsp;Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="bi bi-arrow-left-circle fg-dark" aria-hidden="true"></i>&nbsp;Logout</a></li>
                                     </ul>
                                 </li>
                             {% else %}
@@ -61,8 +61,8 @@
                                         Account
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-down fg-dark"></i> Sign in</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'user-register' %}"><i class="bi bi-person-up fg-dark"></i> Sign up</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-down fg-dark"></i>&nbsp;Sign in</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-register' %}"><i class="bi bi-person-up fg-dark"></i>&nbsp;Sign up</a></li>
                                     </ul>
                                 </li>
                             {% endif %}
@@ -72,10 +72,10 @@
                                         Upgrades
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-x-diamond-fill" style="color: cadetblue;"></i> Manual</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-circle-fill" style="color: blue;"></i> Advanced</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-workspace" style="color: blueviolet;"></i> Business</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-yin-yang" style="color: gold;"></i> Legendary</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'manual' %}"><i class="bi bi-x-diamond-fill"></i>&nbsp;Manual</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'advanced' %}"><i class="bi bi-exclamation-circle-fill"></i>&nbsp;Advanced</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'business' %}"><i class="bi bi-person-workspace"></i>&nbsp;Business</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'legendary' %}"><i class="bi bi-yin-yang"></i>&nbsp;Legendary</a></li>
                                     </ul>
                                 </li>
                             {% else %}
@@ -139,6 +139,6 @@
 {% endblock body %}
 {% block footer %}
     <footer class="text-white text-center py-3">
-        <p>&copy; {{ server.copyright }}</p>
+        <p>&copy; {{ server.copyright }} Developed with ❤️ by <a href="https://shervinbdndev.vercel.app/#/">shervinbdndev</a></p>
     </footer>
 {% endblock footer %}

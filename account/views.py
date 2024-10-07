@@ -74,8 +74,11 @@ class UserIncrementCoinsView(View):
 
 
 class UserLoginView(View):
-    def get(self, request: HttpRequest) -> HttpResponse:
+    def get(self, request: HttpRequest) -> Union[HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect]:
         login_form: LoginForm = LoginForm()
+        
+        if (request.user.is_authenticated):
+            return redirect(to=reverse('user-profile'))
         
         return render(
             request=request,
@@ -129,8 +132,11 @@ class UserLoginView(View):
     
     
 class UserRegisterView(View):
-    def get(self, request: HttpRequest) -> HttpResponse:
+    def get(self, request: HttpRequest) -> Union[HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect]:
         register_form: RegisterForm = RegisterForm()
+        
+        if (request.user.is_authenticated):
+            return redirect(to=reverse('user-profile'))
         
         return render(
             request=request,

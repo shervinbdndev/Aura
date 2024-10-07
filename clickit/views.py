@@ -21,9 +21,6 @@ class MainView(View):
         login_form: LoginForm = LoginForm()
         register_form: RegisterForm = RegisterForm()
         
-        if (request.user.is_authenticated):
-            return redirect(to=reverse('user-profile'))
-        
         return render(
             request=request,
             template_name='click/index.html',

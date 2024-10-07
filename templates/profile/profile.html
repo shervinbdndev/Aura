@@ -46,16 +46,16 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul class="navbar-nav">
                             <a class="nav-link" href="https://github.com/shervinbdndev/Aura">
-                                <i class="bi bi-github" aria-hidden="true"></i> Github
+                                <i class="bi bi-github" aria-hidden="true"></i>&nbsp;Github
                             </a>
                             {% if request.user.is_authenticated %}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle" aria-hidden="true"></i> {{ request.user.username }}
+                                        <i class="bi bi-person-circle" aria-hidden="true"></i>&nbsp;{{ request.user.username }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i> Profile</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="bi bi-arrow-left-circle fg-dark" aria-hidden="true"></i> Logout</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-exclamation fg-dark" aria-hidden="true"></i>&nbsp;Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="bi bi-arrow-left-circle fg-dark" aria-hidden="true"></i>&nbsp;Logout</a></li>
                                     </ul>
                                 </li>
                             {% endif %}
@@ -65,10 +65,10 @@
                                         Upgrades
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-x-diamond-fill" style="color: cadetblue;"></i>&nbsp;Manual</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-circle-fill" style="color: blue;"></i>&nbsp;Advanced</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-workspace" style="color: blueviolet;"></i>&nbsp;Business</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-yin-yang" style="color: gold;"></i>&nbsp;Legendary</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'manual' %}"><i class="bi bi-x-diamond-fill"></i>&nbsp;Manual</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'advanced' %}"><i class="bi bi-exclamation-circle-fill"></i>&nbsp;Advanced</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'business' %}"><i class="bi bi-person-workspace"></i>&nbsp;Business</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'upgrade-cards' 'legendary' %}"><i class="bi bi-yin-yang"></i>&nbsp;Legendary</a></li>
                                     </ul>
                                 </li>
                             {% else %}
@@ -86,14 +86,14 @@
                 <div class="row justify-content-center align-items-stretch">
                     <div class="col-lg-3 col-md-4 col-5">
                         <div class="fancy-container text-center d-flex flex-column justify-content-center">
-                            <h1 class="mb-2">1</h1>
+                            <h1 class="mb-2">1.0</h1>
                             <p>Earn per Click</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-5">
                         <div class="fancy-container text-center d-flex flex-column justify-content-center">
                             <h1 class="mb-2">0.0</h1>
-                            <p>Earn per Second</p>
+                            <p>Earn per Hour</p>
                         </div>
                     </div>
                 </div>
@@ -147,22 +147,22 @@
                 <div class="row justify-content-center align-items-center text-center">
                     <div class="col-6 col-md-3">
                         <div class="upgrade-container py-3 mb-3">
-                            <a style="text-decoration: none;" href="#"><i class="bi bi-x-diamond-fill"></i>&nbsp;Manual</a>
+                            <a style="text-decoration: none;" href="{% url 'upgrade-cards' 'manual' %}"><i class="bi bi-x-diamond-fill"></i>&nbsp;Manual</a>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="upgrade-container py-3 mb-3">
-                            <a style="text-decoration: none;" href="#"><i class="bi bi-exclamation-circle-fill"></i>&nbsp;Advanced</a>
+                            <a style="text-decoration: none;" href="{% url 'upgrade-cards' 'advanced' %}"><i class="bi bi-exclamation-circle-fill"></i>&nbsp;Advanced</a>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="upgrade-container py-3 mb-3">
-                            <a style="text-decoration: none;" href="#"><i class="bi bi-person-workspace"></i>&nbsp;Business</a>
+                            <a style="text-decoration: none;" href="{% url 'upgrade-cards' 'business' %}"><i class="bi bi-person-workspace"></i>&nbsp;Business</a>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="upgrade-container py-3 mb-3">
-                            <a style="text-decoration: none;" href="#"><i class="bi bi-yin-yang"></i>&nbsp;Legendary</a>
+                            <a style="text-decoration: none;" href="{% url 'upgrade-cards' 'legendary' %}"><i class="bi bi-yin-yang"></i>&nbsp;Legendary</a>
                         </div>
                     </div>
                 </div>
@@ -223,6 +223,6 @@
 {% endblock body %}
 {% block footer %}
     <footer class="text-white text-center py-3">
-        <p style="text-decoration: none;">&copy; {{ server.copyright }}</p>
+        <p>&copy; {{ server.copyright }} Developed with ❤️ by <a href="https://shervinbdndev.vercel.app/#/">shervinbdndev</a></p>
     </footer>
 {% endblock footer %}

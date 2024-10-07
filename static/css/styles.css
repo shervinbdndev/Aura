@@ -739,3 +739,56 @@ footer {
     color: white;
     margin-bottom: 5px;
 }
+
+.card-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: linear-gradient(145deg, #fff, #f8f9fa);
+}
+
+.card-container:hover {
+    cursor: pointer;
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+}
+
+.card-icon {
+    font-size: 40px !important;
+    margin-bottom: 15px;
+    color: #23272b;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.coin-amount {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #d32f2f;
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.card-cost strong {
+    font-weight: 800;
+}
+
+.card-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.elevation-2 {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

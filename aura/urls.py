@@ -33,6 +33,11 @@ urlpatterns = [
         view=include('account.urls'),
         name='account-app',
     ),
+    path(
+        route='upgrade/',
+        view=include('upgrade.urls'),
+        name='upgrade-app',
+    ),
     # path(
     #     route='err_400/',
     #     view=Error400View.as_view(),
