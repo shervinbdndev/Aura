@@ -15,7 +15,7 @@
 ## Register form for User Registeration(not included the Login Form Picture).
 <img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/form.png' />
 
-## This is the page that You can Click & Earn by just clicking.
+## This is the page that You can Earn by just clicking.
 <img src='https://raw.githubusercontent.com/shervinbdndev/Aura/refs/heads/master/pics/game.png' />
 
 ## Lets not forget after the Registeration and Authetication you Receive 1 Million Aura Coins as a Reward that you can claim everytime you want.
